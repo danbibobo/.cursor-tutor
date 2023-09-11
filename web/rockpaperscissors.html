@@ -26,19 +26,20 @@
             playGame('Scissors');
             " class="custom-button">Scissors</button>
         <button onclick="
-                wins = 0;
-                loses = 0;
-                ties = 0;
+                score.wins = 0;
+                score.loses = 0;
+                score.ties = 0;
             " class="custom-button">Reset Result</button>
 <script>
+
+            const score = JSON.parse((localStorage.getItem('score')))
+
+           console.log(JSON.parse((localStorage.getItem('score'))));
+        // Declare global variables
             var userChoice;
             var computerChoice;
             var result;
-
-            var wins = 0;
-            var loses = 0;
-            var ties = 0;
-
+            
             function playGame(choice) {
                 userChoice = choice;
                 computerChoice = Math.floor(Math.random() * 3);
@@ -53,20 +54,22 @@
 
                 if (userChoice === computerChoice) {
                     result = "It's a tie!";
-                    ties++;
+                    score.ties +=1 ;
                 } else if (
                     (userChoice === "Rock" && computerChoice === "Scissors") ||
                     (userChoice === "Paper" && computerChoice === "Rock") ||
                     (userChoice === "Scissors" && computerChoice === "Paper")
                 ) {
                     result = "You win!";
-                    wins++;
+                    score.wins++;
                 } else {
                     result = "You lose!";
-                    loses++;
+                    score.loses++;
                 }
 
-                alert(`You chose ${userChoice}. Computer chose ${computerChoice}. ${result}.\nWins: ${wins}, Losses: ${loses}, Ties: ${ties}`);
+                localStorage.setItem('score', JSON.stringify(score));
+
+                alert(`You chose ${userChoice}. Computer chose ${computerChoice}. ${result}.\nWins: ${score.wins}, Losses: ${score.loses}, Ties: ${score.ties}`);
             }
             
         </script>
