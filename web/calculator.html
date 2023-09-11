@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>calculator</title>
+    <h1>CALCULATOR</h1>
+
+</head>
+<body>
+    <style>
+        .custom-button {
+            width: 50px;
+            height: 50px;
+            background-color: lightgray;
+            color: black;
+            }
+    </style>
+    <button onclick="
+            calculator += '1';
+            console.log(calculator);
+        " class="custom-button"> 1</button>
+    <button onclick="
+            calculator += '2';
+            console.log(calculator);
+        "  class="custom-button"> 2</button>
+    <button onclick="
+            calculator += '3';
+            console.log(calculator);
+        "  class="custom-button"> 3</button>
+    <button onclick="
+            calculator += '+';
+            console.log(calculator);
+        "  class="custom-button"> +</button>
+    <button onclick="
+            calculator += '-';
+            console.log(calculator);
+        "  class="custom-button"> -</button>
+    <button onclick="
+            calculator = eval(calculator);
+            console.log(calculator);
+            calculator = '';
+        "  class="custom-button"> =</button>
+    <button onclick="
+            calculator = '';
+            console.log(calculator);
+        "  class="custom-button">reset</button>
+            
+</body>
+<script>
+    let calculator = '';
+</script>
+</html>

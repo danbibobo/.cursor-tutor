@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OneTwoThree</title>
+        <h1>OneTwoThree</h1>
+    </head>
+    <body>
+        <style>
+            .custom-button {
+                width: 100px;
+                height: 50px;
+                background-color: lightgray;
+                color: black;
+                justify-content: center;
+                align-items: center;
+                
+            }
+        </style>
+        <button onclick="
+            playGame('Rock');
+            " class="custom-button">Rock</button>
+        <button onclick="
+            playGame('Paper');
+            " class="custom-button">Paper</button>
+        <button onclick="
+            playGame('Scissors');
+            " class="custom-button">Scissors</button>
+        <button onclick="
+                wins = 0;
+                loses = 0;
+                ties = 0;
+            " class="custom-button">Reset Result</button>
+<script>
+            var userChoice;
+            var computerChoice;
+            var result;
+
+            var wins = 0;
+            var loses = 0;
+            var ties = 0;
+
+            function playGame(choice) {
+                userChoice = choice;
+                computerChoice = Math.floor(Math.random() * 3);
+
+                if (computerChoice === 0) {
+                    computerChoice = "Rock";
+                } else if (computerChoice === 1) {
+                    computerChoice = "Paper";
+                } else {
+                    computerChoice = "Scissors";
+                }
+
+                if (userChoice === computerChoice) {
+                    result = "It's a tie!";
+                    ties++;
+                } else if (
+                    (userChoice === "Rock" && computerChoice === "Scissors") ||
+                    (userChoice === "Paper" && computerChoice === "Rock") ||
+                    (userChoice === "Scissors" && computerChoice === "Paper")
+                ) {
+                    result = "You win!";
+                    wins++;
+                } else {
+                    result = "You lose!";
+                    loses++;
+                }
+
+                alert(`You chose ${userChoice}. Computer chose ${computerChoice}. ${result}.\nWins: ${wins}, Losses: ${loses}, Ties: ${ties}`);
+            }
+            
+        </script>
+    </body>
+</html>
