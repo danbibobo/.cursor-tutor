@@ -32,7 +32,12 @@
             " class="custom-button">Reset Result</button>
 <script>
 
-            const score = JSON.parse((localStorage.getItem('score')))
+            let score = JSON.parse((localStorage.getItem
+            ('score'))) || {
+                wins:0,
+                loses:0,
+                ties:0
+            };
 
            console.log(JSON.parse((localStorage.getItem('score'))));
         // Declare global variables
