@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blank Website</title>
+</head>
+<body>
+    <style>
+        .watch{
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+        }
+
+        .btn{
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+        }
+    </style>
+    <div class="watch">
+    <input type="text" id="minus" value="00" style="
+        max-width:60px;
+        display: inline;
+        border: none;
+        text-align: right;
+        font-size: 40px;
+        ">
+    
+    <input type="text" id="second" value="00" style="
+        max-width:60px;
+        display: inline;
+        border: none;
+        font-size: 40px;
+        ">
+        </div>
+        <div class="btn">
+    <button style="margin: 8px;" id="start" onclick="start();" >Start</button>
+    <button style="margin: 8px;" id="stop" onclick="stop();">Stop</button>
+    <button style="margin: 8px;" id="reset" onclick="reset();">Reset</button>
+      </div>
+    <script>
+        var clear = null;
+        var second = 0;
+    
+    function timer(){
+        second++;
+        let mins = Math.floor(second/60);
+        let secs = second%60;
+        if(mins < 10) mins = '0' + mins;
+        if(secs < 10) secs = '0' + secs;
+        document.getElementById('second').value = secs;
+        document.getElementById('minus').value = mins;
+    }
+    
+    function start(){
+        if(clear){
+            return
+        }
+        clear = setInterval(timer, 1000)
+    }
+
+    function stop(){
+        clearInterval(clear);
+        clear = null;
+    }
+
+    function reset(){
+        stop();
+        document.getElementById('second').value = '00';
+        document.getElementById('minus').value = '00';
+    }
+    </script>
+</body>
+</html>
+
