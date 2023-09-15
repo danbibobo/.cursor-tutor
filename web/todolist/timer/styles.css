@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.watch{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    margin: 8px;
+    padding: 8px;
+}
+
+#minus,
+#second {
+    max-width:60px;
+        display: inline;
+        border: none;
+        font-size: 40px;
+        text-align: center;
+}

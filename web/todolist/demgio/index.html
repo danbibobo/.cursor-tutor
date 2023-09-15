@@ -3,54 +3,26 @@
 <head>
     <title>Blank Website</title>
 </head>
+<link rel="stylesheet" href="./styles.css">
 <body>
-    <style>
-        .watch{
-            display: flex;
-            justify-content: center;
-            justify-items: center;
-        }
 
-        .btn{
-            display: flex;
-            justify-content: center;
-            justify-items: center;
-        }
-    </style>
     <div class="watch">
-    <input type="text" id="minus" value="10" style="
-        max-width:60px;
-        display: inline;
-        border: none;
-        text-align: right;
-        font-size: 40px;
-        ">
-    
-    <input type="text" id="second" value="05" style="
-        max-width:60px;
-        display: inline;
-        border: none;
-        font-size: 40px;
-        ">
+    <input type="text" id="minus" value="00">
+    <input type="text" id="second" value="00">
         </div>
         <div class="btn">
     <button style="margin: 8px;" id="start" onclick="start();" >Start</button>
     <button style="margin: 8px;" id="stop" onclick="stop();">Stop</button>
-    <button style="margin: 8px;" id="reset" onclick="reset();" >Reset</button>
+    <button style="margin: 8px;" id="reset" onclick="reset();">Reset</button>
       </div>
     <script>
         var clear = null;
         var second = 0;
-        var mins = document.getElementById('minus').value;
-        var secs = document.getElementById('second').value;
-        second = parseInt(mins) *60 + parseInt(secs);
-
     
     function timer(){
-
-        second--;
-        mins = Math.floor(second/60);
-        secs = second%60;
+        second++;
+        let mins = Math.floor(second/60);
+        let secs = second%60;
         if(mins < 10) mins = '0' + mins;
         if(secs < 10) secs = '0' + secs;
         document.getElementById('second').value = secs;
