@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .forms import Book_Form
 from .models import Book
 from .admin import BookResource
-from tablib import Dataset
+
 
 def DISPLAYDATA(request):
     data = Book.objects.all()
@@ -29,18 +29,8 @@ def insertFile(request):
 def import_data(request):
     if request.method == 'POST': 
         resource = BookResource()
-        dataset = Dataset()
         newBook = request.FILES['myfile']
-        imported_data = dataset.load(newBook.read(), format = 'xlsx')
 
-        for data in imported_data:
-            value = Book(
-                data[0],
-                data[1],
-                data[2],
-                data[3],
-            )
-            value.save()
         data = Book.objects.all()
         return render(request, 'index.html', {'data': data})
         result = resource.import_data(dataset, dry_run=False)  # Set dry_run to True for a dry run
