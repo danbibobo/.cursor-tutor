@@ -1,0 +1,8 @@
+    {% extends 'index.html' %}
+    {% block content %}
+    <form action="{% url 'products:getNewBook' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{nb.as_p}}
+        <button type="submit">Upload</button>
+    </form>
+    {% endblock %}

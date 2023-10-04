@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products</title>
+
+    <link rel="stylesheet" href="./static/img/logo3.jpg">
+</head>
+<body>
+    <style>
+
+        header{
+            display: block;
+        }
+
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+
+        th, td{
+            min-width: 140px;
+            text-align: center;
+        }
+
+        th{
+            background-color: goldenrod;
+        }
+
+        
+
+        .sub{
+            padding: 10px;
+            float: both;
+            background-color: green;
+
+        }
+
+        .sub-nav{
+            margin: 10px;
+            display: inline-block;
+            color: #fff;
+        }
+        .sale-func{
+            float: right;
+        }
+        .content{
+            position: absolute;
+            float: left;;
+        }
+        .sidebar{
+            position: relative;
+            display: inline-block;
+            min-width: 200px;
+            border: 1px;
+        }
+        .dataset{
+            float: right;
+            max-width: 900px;
+            scroll-behavior: auto;
+        }
+        </style>
+    <header>
+        <div>
+            <img src="./static/img/logo3.png" alt="logo">
+        </div>
+
+    </header>
+    <nav>
+        <div class="sub">
+            <div class="sub-nav"> Tổng quan </div>
+            <div class="sub-nav"> Hàng hóa  </div>
+            <div class="sub-nav"> Giao dịch </div>
+            <div class="sub-nav"> Đối tác </div>
+            <div class="sub-nav sale-func"> Bán hàng </div>
+        </div>
+    </nav>
+    <div class="content">
+    <div class="sidebar">
+        <div style="color: black; border: 0.5px; margin: 5px; padding: 5px; text-align: center;" class="sidebar-func"> Tìm kiếm 
+            <br>
+            <input style="display: inline-block; padding: 5px; margin: 5px;" type="text" placeholder="Tìm kiếm...">
+        </div>
+        <div style="color: black; border: 0.5px; margin: 5px; padding: 5px; text-align: center;" class="sidebar-func"> Loại hàng 
+            <br>
+            <div style=" text-align: left; margin: 5px;" class="checkbox-PGroup">
+            <input type="checkbox" id="combo" name="combo" value="Combo - Dịch vụ">
+            <label for="combo">Combo - Dịch vụ</label><br>
+            <input type="checkbox" id="hanghoa" name="hanghoa" value="Hàng Hóa">
+            <label for="vehicle2"> Hàng Hóa</label><br>
+            <input type="checkbox" id="dichvu" name="dichvu" value="Dịch vụ">
+            <label for="vehicle3"> Dịch vụ</label><br>
+            </div>
+        </div>
+        <div style="color: black; border: 0.5px; margin: 5px; padding: 5px; text-align: center;" class="sidebar-func"> Lọc tồn kho </div>
+        <div style="color: black; border: 0.5px; margin: 5px; padding: 5px; text-align: center;" class="sidebar-func"> Nhóm hàng </div>
+    </div>
+
+    <div class="dataset">
+        <div style="float: right; margin: 3px; padding: 3px;" class="nav-table">
+            <a href="{% url 'products:newBook' %}">
+                <button style="background-color: lightblue; display: inline-block;" >Thêm mới</button>
+            </a>
+
+            <a href="{% url 'products:uploadFile' %}">
+                <button style="background-color: lightblue; display: inline-block;" >Tải excel</button>
+            </a>
+                     
+            <div style="display: inline; border: 1px; background-color: lightblue;" class="Menu">Menu</div>
+        </div>
+       
+
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Author Email</th>
+            <th>Price</th>
+        </thead>
+        <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item.name }} </td>
+                    <td>{{ item.author }}</td>
+                    <td>{{ item.author_email}}</td>
+                    <td>{{item.price}}</td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <div >
+        {% block content %}
+
+        {% endblock content %}
+
+        {% block import %}
+
+        {% endblock import %}
+        
+    </div>
+    <!-- <form method="post" enctype="multipart/form-data" id="uploadForm">
+        {% csrf_token %}
+        <input type="file" name="data_file">
+        <button type="submit">Upload</button>
+    </form>     -->
+    <script>
+        document.querySelector("addNewProduct").addEventListener("click", function () {
+
+           
+            // Add your custom code here
+        });
+    </script>
+</body> 
+</html>

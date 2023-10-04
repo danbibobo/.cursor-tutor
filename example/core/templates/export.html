@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Export</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <style type="text/css">
+        body{
+            background-color: #f7fcff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 pt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Django Custom Import Export Example - Tuts-Station.com</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            <p class="m-0">Please select format of file.</p>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    {% csrf_token %}
+                                    <select name="file-format" class="form-control my-3">
+                                        <option selected>Choose format...</option>
+                                        <option>CSV</option>
+                                        <option>JSON</option>
+                                        <option>XLS (Excel)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 mt-3 text-right">
+                                    <button class="btn btn-primary" type="submit">Export</button>
+                                </div>
+                            </div>
+                        </form>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Day Started</th>
+                                    <th>Location</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for employee in employees %}
+                                    <tr>
+                                        <td>{{ employee.id }}</td>
+                                        <td>{{ employee.first_name }}</td>
+                                        <td>{{ employee.last_name }}</td>
+                                        <td>{{ employee.email }}</td>
+                                        <td>{{ employee.day_started }}</td>
+                                        <td>{{ employee.location }}</td>
+                                    </tr>
+                                {% endfor %}
+                                <tr></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
