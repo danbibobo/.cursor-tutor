@@ -35,12 +35,12 @@ def import_data(request):
         return render(request, 'index.html', {'data': data})
         result = resource.import_data(dataset, dry_run=False)  # Set dry_run to True for a dry run
 
-        #     if result.has_errors():
-        #         # Handle errors
-        #         errors = result.rows_with_errors()
-        #         return render(request, 'import.html', {'form': form, 'errors': errors})
-        #     else:
-        #         # Successful import
+            if result.has_errors():
+                # Handle errors
+                errors = result.rows_with_errors()
+                return render(request, 'import.html', {'form': form, 'errors': errors})
+            else:
+                # Successful import
         
     else:
         return render(request, 'import.html', {})
